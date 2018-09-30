@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mypage_favor">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FF9C00"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+            android:id="@+id/fav_title"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="36dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/mp_favtitle" />
+
+        <RadioButton
+            android:id="@+id/radiofav1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editText1"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="45dp"
+            android:text="1. " />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="249dp"
+            android:layout_height="36dp"
+            android:layout_alignEnd="@+id/but_fav_o"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="192dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radiofav2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editText2"
+            android:layout_alignStart="@+id/radiofav1"
+            android:text="2. " />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="249dp"
+            android:layout_height="36dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/editText1"
+            android:layout_marginTop="250dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radiofav3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/radiofav1"
+            android:layout_alignTop="@+id/editText3"
+            android:text="3. " />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="249dp"
+            android:layout_height="38dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/editText1"
+            android:layout_marginTop="308dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="wrap_content"
+            android:layout_height="108dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/radiofav1"
+            android:layout_marginBottom="137dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/fav_index" />
+
+        <Button
+            android:id="@+id/but_fav_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="99dp"
+            android:layout_marginStart="31dp"
+            android:background="#fff186"
+            android:text="취소" />
+
+        <Button
+            android:id="@+id/but_fav_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/but_fav_x"
+            android:layout_centerHorizontal="true"
+            android:background="#00a6ff"
+            android:text="확인" />
+
+
+        <Button
+            android:id="@+id/but_fav_o"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/but_fav_x"
+            android:layout_marginEnd="33dp"
+            android:background="#ff6464"
+            android:text="초기화" />
+
+        <Button
+            android:id="@+id/but_fav_pre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:text="prev"
+            tools:layout_editor_absoluteX="136dp"
+            tools:layout_editor_absoluteY="447dp" />
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
