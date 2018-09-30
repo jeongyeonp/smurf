@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registration"></activity>
+        <activity android:name=".Registration" />
         <activity android:name=".Search_IDPW" />
         <activity android:name=".SearchID" />
         <activity android:name=".SearchPW" />
@@ -54,7 +54,7 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-
+        <activity android:name=".mypage"></activity>
     </application>
 
 </manifest>

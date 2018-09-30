@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         butMp.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), mypage_allergy.class);
+                Intent intent = new Intent(getApplicationContext(), mypage.class);
                 startActivity(intent);
 
             }
