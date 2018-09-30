@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class mypage_allergy extends AppCompatActivity {
 
     private Button but_a_save;
-    private CheckBox rd1, rd2, rd3, rd4, rd5, rd6, rd7, rd8, rd9, rd10, rd11, rd12, rd13, rd14, rd15, rd16, rd17, rd18;
+    private CheckBox rd1, rd2, rd3, rd4, rd5, rd6, rd7, rd8, rd9, rd10, rd11, rd12;
     private SessionHandler session;
     private JSONObject req;
     private ProgressDialog pDialog;
@@ -48,8 +48,6 @@ public class mypage_allergy extends AppCompatActivity {
         rd4 = (CheckBox) findViewById(R.id.rd4);rd5 = (CheckBox) findViewById(R.id.rd5);rd6 = (CheckBox) findViewById(R.id.rd6);
         rd7 = (CheckBox) findViewById(R.id.rd7);rd8 = (CheckBox) findViewById(R.id.rd8);rd9 = (CheckBox) findViewById(R.id.rd9);
         rd10 = (CheckBox) findViewById(R.id.rd10);rd11 = (CheckBox) findViewById(R.id.rd11);rd12 = (CheckBox) findViewById(R.id.rd12);
-        rd13 = (CheckBox) findViewById(R.id.rd13);rd14 = (CheckBox) findViewById(R.id.rd14);rd15 = (CheckBox) findViewById(R.id.rd15);
-        rd16 = (CheckBox) findViewById(R.id.rd16);rd17 = (CheckBox) findViewById(R.id.rd17);rd18 = (CheckBox) findViewById(R.id.rd18);
 
         session = new SessionHandler(getApplicationContext());
         User user = session.getUserDetails();
@@ -96,7 +94,7 @@ public class mypage_allergy extends AppCompatActivity {
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
                     try {
-                        req.put("allergy", "메밀");
+                        req.put("allergy", "땅콩");
                         req.put("user_id", user.getUser_id());
                     } catch (JSONException e) { e.printStackTrace(); } } }
         });
@@ -105,7 +103,7 @@ public class mypage_allergy extends AppCompatActivity {
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
                     try {
-                        req.put("allergy", "토마토");
+                        req.put("allergy", "대두");
                         req.put("user_id", user.getUser_id());
                     } catch (JSONException e) { e.printStackTrace(); } } }
         });
@@ -114,7 +112,7 @@ public class mypage_allergy extends AppCompatActivity {
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
                     try {
-                        req.put("allergy", "땅콩");
+                        req.put("allergy", "갑각류");
                         req.put("user_id", user.getUser_id());
                     } catch (JSONException e) { e.printStackTrace(); } } }
         });
@@ -123,7 +121,7 @@ public class mypage_allergy extends AppCompatActivity {
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
                     try {
-                        req.put("allergy", "아황산염");
+                        req.put("allergy", "호두");
                         req.put("user_id", user.getUser_id());
                     } catch (JSONException e) { e.printStackTrace(); } } }
         });
@@ -132,7 +130,7 @@ public class mypage_allergy extends AppCompatActivity {
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
                     try {
-                        req.put("allergy", "대두");
+                        req.put("allergy", "밀");
                         req.put("user_id", user.getUser_id());
                     } catch (JSONException e) { e.printStackTrace(); } } }
         });
@@ -141,7 +139,7 @@ public class mypage_allergy extends AppCompatActivity {
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
                     try {
-                        req.put("allergy", "호두");
+                        req.put("allergy", "닭고기");
                         req.put("user_id", user.getUser_id());
                     } catch (JSONException e) { e.printStackTrace(); } } }
         });
@@ -150,65 +148,11 @@ public class mypage_allergy extends AppCompatActivity {
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
                     try {
-                        req.put("allergy", "밀");
-                        req.put("user_id", user.getUser_id());
-                    } catch (JSONException e) { e.printStackTrace(); } } }
-        });
-        rd12.setOnClickListener(new CheckBox.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    try {
-                        req.put("allergy", "닭고기");
-                        req.put("user_id", user.getUser_id());
-                    } catch (JSONException e) { e.printStackTrace(); } } }
-        });
-        rd13.setOnClickListener(new CheckBox.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    try {
-                        req.put("allergy", "고등어");
-                        req.put("user_id", user.getUser_id());
-                    } catch (JSONException e) { e.printStackTrace(); } } }
-        });
-        rd14.setOnClickListener(new CheckBox.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    try {
                         req.put("allergy", "쇠고기");
                         req.put("user_id", user.getUser_id());
                     } catch (JSONException e) { e.printStackTrace(); } } }
         });
-        rd15.setOnClickListener(new CheckBox.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    try {
-                        req.put("allergy", "게");
-                        req.put("user_id", user.getUser_id());
-                    } catch (JSONException e) { e.printStackTrace(); } } }
-        });
-        rd16.setOnClickListener(new CheckBox.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    try {
-                        req.put("allergy", "오징어");
-                        req.put("user_id", user.getUser_id());
-                    } catch (JSONException e) { e.printStackTrace(); } } }
-        });
-        rd17.setOnClickListener(new CheckBox.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    try {
-                        req.put("allergy", "새우");
-                        req.put("user_id", user.getUser_id());
-                    } catch (JSONException e) { e.printStackTrace(); } } }
-        });
-        rd18.setOnClickListener(new CheckBox.OnClickListener() {
+        rd12.setOnClickListener(new CheckBox.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
