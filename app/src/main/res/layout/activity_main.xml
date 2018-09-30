@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/username"
-            android:layout_width="148dp"
+            android:layout_width="wrap_content"
             android:layout_height="47dp"
             android:text="----" />
 
@@ -35,8 +35,8 @@
             android:id="@+id/logout"
             android:layout_width="98dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-24dp"
-            android:layout_toRightOf="@+id/hello"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="17dp"
             android:text="로그아웃" />
 
     <FrameLayout
