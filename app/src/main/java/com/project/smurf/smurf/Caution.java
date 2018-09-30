@@ -16,7 +16,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Caution extends AppCompatActivity {
-    private TextView a_info;
     private TextView a_food_info;
     private SessionHandler session;
     private JSONObject info;
@@ -34,7 +33,6 @@ public class Caution extends AppCompatActivity {
         session = new SessionHandler(getApplicationContext());
         User user = session.getUserDetails();
         info = new JSONObject();
-        a_info = (TextView)findViewById(R.id.a_info);
         a_food_info = (TextView)findViewById(R.id.a_food_info);
         user_info_url = mp_u_url + user.getUser_id();
 
@@ -78,7 +76,6 @@ public class Caution extends AppCompatActivity {
             try{
                 result_array=new JSONArray(result);
                 for(int i=0;i<result_array.length();i++) {
-                    a_info.append(result_array.getJSONObject(i).getString("allergy"));
                     a_food_info.append(result_array.getJSONObject(i).getString("food_name"));
                 }
             }catch(JSONException e){

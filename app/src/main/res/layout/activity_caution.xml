@@ -41,40 +41,12 @@
             android:background="#FFFFFF"
             tools:layout_editor_absoluteY="100dp" />
 
-        <TextView
-            android:id="@+id/textView_c"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:layout_below="@+id/view1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="내 알러지 :"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textSize="25dp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="113dp" />
-
-        <TextView
-            android:id="@+id/a_info"
-            android:layout_width="154dp"
-            android:layout_height="39dp"
-            android:layout_below="@+id/view1"
-            android:layout_toRightOf="@+id/textView_c"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
-            android:textSize="25dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="24dp"
-            android:text="" />
 
         <TextView
             android:id="@+id/a_food_info"
-            android:layout_width="401dp"
+            android:layout_width="match_parent"
             android:layout_height="355dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="78dp"
-            android:layout_marginStart="-121dp"
-            android:layout_toEndOf="@+id/textView_c"
+            android:layout_centerVertical="true"
             android:text="" />
 
     </RelativeLayout>
