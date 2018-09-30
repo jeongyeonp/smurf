@@ -38,7 +38,9 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp">
 
                 <CheckBox
                     android:id="@+id/rd1"
@@ -61,7 +63,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp">
 
                 <CheckBox
                     android:id="@+id/rd3"
@@ -83,9 +86,12 @@
             </TableRow>
 
 
+
+
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp">
 
                 <CheckBox
                     android:id="@+id/rd5"
@@ -94,7 +100,7 @@
                     android:layout_marginLeft="20dp"
                     android:textSize="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="메밀" />
+                    android:text="땅콩" />
 
                 <CheckBox
                     android:id="@+id/rd6"
@@ -103,12 +109,13 @@
                     android:layout_marginLeft="90dp"
                     android:textSize="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="토마토" />
+                    android:text="대두" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp">
 
                 <CheckBox
                     android:id="@+id/rd7"
@@ -117,33 +124,11 @@
                     android:layout_marginLeft="20dp"
                     android:textSize="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="땅콩" />
+                    android:text="갑각류" />
+
 
                 <CheckBox
                     android:id="@+id/rd8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="90dp"
-                    android:textSize="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="아황산염" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <CheckBox
-                    android:id="@+id/rd9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="대두" />
-
-                <CheckBox
-                    android:id="@+id/rd10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="90dp"
@@ -154,10 +139,11 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp">
 
                 <CheckBox
-                    android:id="@+id/rd11"
+                    android:id="@+id/rd9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -166,7 +152,7 @@
                     android:text="밀" />
 
                 <CheckBox
-                    android:id="@+id/rd12"
+                    android:id="@+id/rd10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="90dp"
@@ -177,65 +163,20 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp">
 
                 <CheckBox
-                    android:id="@+id/rd13"
+                    android:id="@+id/rd11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:textSize="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="고등어" />
+                    android:text="쇠고기"
+                    android:textSize="20dp" />
 
                 <CheckBox
-                    android:id="@+id/rd14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="90dp"
-                    android:textSize="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="쇠고기" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <CheckBox
-                    android:id="@+id/rd15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="게" />
-
-                <CheckBox
-                    android:id="@+id/rd16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="90dp"
-                    android:textSize="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="오징어" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <CheckBox
-                    android:id="@+id/rd17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="새우" />
-
-                <CheckBox
-                    android:id="@+id/rd18"
+                    android:id="@+id/rd12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="90dp"
@@ -244,6 +185,7 @@
                     android:text="조개류" />
             </TableRow>
 
+
         </TableLayout>
 
 
@@ -251,17 +193,17 @@
             android:id="@+id/view_al"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@+id/allergylist"
-            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="107dp"
             android:background="#FFFFFF" />
 
         <Button
             android:id="@+id/but_a_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/view_al"
-            android:layout_marginTop="15dp"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="42dp"
             android:text="저장" />
 
     </RelativeLayout>
