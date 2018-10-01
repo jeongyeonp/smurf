@@ -42,13 +42,16 @@
             tools:layout_editor_absoluteX="108dp"
             tools:layout_editor_absoluteY="33dp" />
 
-        <TextView
-            android:id="@+id/temphis"
-            android:layout_width="wrap_content"
-            android:layout_height="422dp"
-            android:layout_below="@+id/imageView5"
+        <ListView
+            android:id="@+id/H_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="60dp" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/imageView5"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"/>
 
 
     </RelativeLayout>

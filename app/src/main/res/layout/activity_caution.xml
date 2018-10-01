@@ -41,13 +41,15 @@
             android:background="#FFFFFF"
             tools:layout_editor_absoluteY="100dp" />
 
+        <ListView
+            android:id="@+id/C_LV"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/view1"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_height="494dp" />
 
-        <TextView
-            android:id="@+id/a_food_info"
-            android:layout_width="match_parent"
-            android:layout_height="355dp"
-            android:layout_centerVertical="true"
-            android:text="" />
 
     </RelativeLayout>
 

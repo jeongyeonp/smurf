@@ -14,9 +14,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import android.widget.ListView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Caution extends AppCompatActivity {
-    private TextView a_food_info;
+    //private TextView a_food_info;
     private SessionHandler session;
     private JSONObject info;
     public String mp_u_url = "http://210.102.181.158:62003/mypage/";
@@ -25,6 +30,13 @@ public class Caution extends AppCompatActivity {
     public JSONTask allergyinfo;
     public JSONArray result_array;
     public  JSONObject result_data;
+
+    private ArrayList<HashMap<String,String>> Data = new ArrayList<HashMap<String, String>>();
+    private HashMap<String,String> InputData1 = new HashMap<>();
+    private HashMap<String,String> InputData2 = new HashMap<>();
+    private ListView C_LV;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +45,8 @@ public class Caution extends AppCompatActivity {
         session = new SessionHandler(getApplicationContext());
         User user = session.getUserDetails();
         info = new JSONObject();
-        a_food_info = (TextView)findViewById(R.id.a_food_info);
+        C_LV =(ListView)findViewById(R.id.C_LV);
+        //a_food_info = (TextView)findViewById(R.id.a_food_info);
         user_info_url = mp_u_url + user.getUser_id();
 
         allergyinfo = new JSONTask();
@@ -71,16 +84,22 @@ public class Caution extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             // super.onPostExecute(result);
+            ArrayList<c_list> data=new ArrayList<>();
 
 
             try{
                 result_array=new JSONArray(result);
                 for(int i=0;i<result_array.length();i++) {
-                    a_food_info.append(result_array.getJSONObject(i).getString("food_name"));
+                    c_list fn = new c_list(result_array.getJSONObject(i).getString("food_name"));
+                    //a_food_info.append(result_array.getJSONObject(i).getString("food_name"));
+                    data.add(fn);
+
                 }
             }catch(JSONException e){
                 e.printStackTrace();
             }
+            c_adapter adapter=new c_adapter(Caution.this, R.layout.list ,data);
+            C_LV.setAdapter(adapter);
 
         }
     }

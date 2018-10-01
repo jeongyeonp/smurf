@@ -54,7 +54,8 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".mypage"></activity>
+        <activity android:name=".mypage" />
+        <activity android:name=".food_detail"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,6 @@
 package com.project.smurf.smurf;
 
-
+//import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +17,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+//import android.content.SharedPreferences;
 
 
 public class mypage_allergy extends AppCompatActivity {
@@ -35,6 +37,7 @@ public class mypage_allergy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage_allergy);
+        //SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
 
         but_a_save = (Button) findViewById(R.id.but_a_save);
         but_a_save.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +164,7 @@ public class mypage_allergy extends AppCompatActivity {
                         req.put("user_id", user.getUser_id());
                     } catch (JSONException e) { e.printStackTrace(); } } }
         });
+
     }
 
     private void uchecked() {
