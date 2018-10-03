@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".food_detail">
+    tools:context=".h_food_detail">
 
 
     <RelativeLayout
@@ -285,7 +285,7 @@
         </TableLayout>
 
         <Button
-            android:id="@+id/but_next"
+            android:id="@+id/but_h_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fooddetail"

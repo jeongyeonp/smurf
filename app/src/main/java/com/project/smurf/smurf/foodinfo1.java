@@ -21,10 +21,7 @@ import org.json.JSONObject;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.lang.String;
 
 
@@ -67,12 +64,14 @@ public class foodinfo1 extends AppCompatActivity {
     private SessionHandler session;
     private JSONObject req;
 
+    private TextView t;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_foodinfo1);
         Intent intent = getIntent();
-        String foodnames = intent.getExtras().getString("foodname");
+        String foodnames = intent.getExtras().getString("foodname").trim();
         jt = new JSONTask();
 
         jt.execute(smurfurl);
@@ -80,8 +79,7 @@ public class foodinfo1 extends AppCompatActivity {
 
         //json_data
         try {
-            json_array = new JSONArray(foodnames);
-            result_data = json_array.getJSONObject(0).getString("description");
+            json_data = new JSONObject(foodnames);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -151,7 +149,7 @@ public class foodinfo1 extends AppCompatActivity {
                 result_json_array=new JSONArray(result);
                 for(int i=0;i<result_json_array.length();i++){
                     result_json_data=result_json_array.getJSONObject(i);
-                    if(result_json_data.getString("food_name_eng").equals(result_data)){
+                    if(result_json_data.getString("food_name_kor").equals(json_data)){
 
                         zz_name+= result_json_data.getString("food_name_kor");
                         zz_kcal+=result_json_data.getString("food_kcal");

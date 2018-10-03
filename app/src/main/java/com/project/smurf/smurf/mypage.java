@@ -5,7 +5,9 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -16,20 +18,25 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class mypage extends AppCompatActivity {
     private Button mp_al;
-    private TextView mpuser;
-    private TextView mpallergy;
+    private  TextView mpuser;
+    private ListView mpallergy;
+    private Button del;
 
     private SessionHandler session;
     private JSONObject info;
     public String mp_url = "http://210.102.181.158:62003/mp/";
     public String user_url = "";
 
+    public String alist;
+
     public JSONTask mpinfo;
     public JSONArray result_array;
     public  JSONObject result_data;
+    private ArrayList<mp_list> data =null;
 
 
     @Override
@@ -47,8 +54,15 @@ public class mypage extends AppCompatActivity {
             }
         });
 
+
         mpuser = (TextView) findViewById(R.id.mpuser);
-        mpallergy = (TextView) findViewById(R.id.mpallergy);
+        mpallergy = (ListView) findViewById(R.id.mpallergy);
+        mpallergy.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                alist = data.get(position).getAllergy();
+            }
+        });
 
         session = new SessionHandler(getApplicationContext());
         User user = session.getUserDetails();
@@ -59,6 +73,8 @@ public class mypage extends AppCompatActivity {
 
         mpinfo = new JSONTask();
         mpinfo.execute(user_url);
+
+
     }
     public class JSONTask extends AsyncTask<String, String, String> {
         @Override
@@ -93,19 +109,23 @@ public class mypage extends AppCompatActivity {
         protected void onPostExecute(String result) {
 
             // super.onPostExecute(result);
-
+            ArrayList<mp_list> data=new ArrayList<>();
 
             try{
                 result_array=new JSONArray(result);
                 for(int i=0;i<result_array.length();i++) {
-                    mpallergy.append(result_array.getJSONObject(i).getString("allergy"));
+                    mp_list fn = new mp_list(result_array.getJSONObject(i).getString("allergy"));
+                    data.add(fn);
+                   /* mpallergy.append(result_array.getJSONObject(i).getString("allergy"));
                     mpallergy.append("\n");
+                    */
 
                 }
             }catch(JSONException e){
                 e.printStackTrace();
             }
-
+            mp_adapter adapter=new mp_adapter(mypage.this, R.layout.a_list ,data);
+            mpallergy.setAdapter(adapter);
         }
     }
 }

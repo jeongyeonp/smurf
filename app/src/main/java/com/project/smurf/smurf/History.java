@@ -8,6 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -29,6 +31,7 @@ public class History extends AppCompatActivity {
     public JSONArray result_array;
     public  JSONObject result_data;
     private ListView H_lv;
+    private ArrayList<h_list> data =null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,14 @@ public class History extends AppCompatActivity {
         user_url = h_url + user.getUser_id();
 
         H_lv =(ListView)findViewById(R.id.H_lv);
+        H_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i =new Intent(getApplicationContext(),h_food_detail.class);
+                i.putExtra("foodname", data.get(position).getFoodname());
+                startActivity(i);
+            }
+        });
 
         hisinfo = new JSONTask();
         hisinfo.execute(user_url);
@@ -75,7 +86,7 @@ public class History extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result) {
-            ArrayList<h_list> data=new ArrayList<>();
+            data=new ArrayList<>();
             // super.onPostExecute(result);
             try{
                 result_array=new JSONArray(result);

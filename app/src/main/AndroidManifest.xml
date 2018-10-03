@@ -55,7 +55,8 @@
         </provider>
 
         <activity android:name=".mypage" />
-        <activity android:name=".food_detail"></activity>
+        <activity android:name=".food_detail" />
+        <activity android:name=".h_food_detail"></activity>
     </application>
 
 </manifest>

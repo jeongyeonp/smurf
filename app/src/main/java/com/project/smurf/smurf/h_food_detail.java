@@ -7,13 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.os.AsyncTask;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,9 +16,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.String;
 
-public class food_detail extends AppCompatActivity {
+public class h_food_detail extends AppCompatActivity {
 
-    private Button but_next;
+    private Button but_h_next;
     private TextView food_result;
     private TextView food_result_kcal;
     private TextView food_result_carb;
@@ -64,7 +57,7 @@ public class food_detail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_detail);
+        setContentView(R.layout.activity_h_food_detail);
 
         Intent intent = getIntent();
         foodnames = intent.getExtras().getString("foodname");
@@ -78,14 +71,13 @@ public class food_detail extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        but_next = (Button) findViewById(R.id.but_next);
-        but_next.setOnClickListener(new View.OnClickListener() {
+        but_h_next = (Button) findViewById(R.id.but_h_next);
+        but_h_next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Caution.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                Intent i = new Intent(getApplicationContext(), History.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
                 finish();
-
             }
         });
 

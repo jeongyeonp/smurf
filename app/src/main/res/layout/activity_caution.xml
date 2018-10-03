@@ -45,10 +45,9 @@
             android:id="@+id/C_LV"
             android:layout_width="wrap_content"
             android:layout_below="@+id/view1"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_height="494dp" />
+            android:layout_height="494dp"
+            android:divider="#FFFFFF"
+            android:dividerHeight="1dp"/>
 
 
     </RelativeLayout>

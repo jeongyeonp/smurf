@@ -8,6 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -35,6 +37,7 @@ public class Caution extends AppCompatActivity {
     private HashMap<String,String> InputData1 = new HashMap<>();
     private HashMap<String,String> InputData2 = new HashMap<>();
     private ListView C_LV;
+    private ArrayList<c_list> data =null;
 
 
     @Override
@@ -46,7 +49,14 @@ public class Caution extends AppCompatActivity {
         User user = session.getUserDetails();
         info = new JSONObject();
         C_LV =(ListView)findViewById(R.id.C_LV);
-        //a_food_info = (TextView)findViewById(R.id.a_food_info);
+        C_LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i =new Intent(getApplicationContext(),food_detail.class);
+                 i.putExtra("foodname", data.get(position).getFoodname());
+                 startActivity(i);
+            }
+        });
         user_info_url = mp_u_url + user.getUser_id();
 
         allergyinfo = new JSONTask();
@@ -84,7 +94,7 @@ public class Caution extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             // super.onPostExecute(result);
-            ArrayList<c_list> data=new ArrayList<>();
+            data=new ArrayList<>();
 
 
             try{

@@ -35,14 +35,18 @@
             android:text=" "
             android:textSize="20dp" />
 
-        <TextView
+        <ListView
             android:id="@+id/mpallergy"
-            android:layout_width="330dp"
-            android:layout_height="238dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="304dp"
+            android:layout_height="221dp"
+            android:layout_alignParentBottom="true"
             android:layout_below="@+id/mpuser"
             android:layout_centerHorizontal="true"
-            android:background="#e6fcfbe8"
+            android:layout_marginBottom="117dp"
+            android:layout_marginTop="15dp"
+            android:background="#FFFFFF"
+            android:divider="#FFA619"
+            android:dividerHeight="1dp"
             android:textSize="20dp" />
 
         <Button
@@ -52,9 +56,10 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="45dp"
-            android:background="#015f91"
+            android:background="#0060B2"
             android:text="   나의 알러지 성분 선택  >   "
             android:textColor="#FFFFFF" />
+
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

@@ -299,7 +299,8 @@
             android:layout_below="@+id/fooddetail"
             android:layout_marginLeft="250dp"
             android:layout_marginTop="10dp"
-            android:background="#00a6ff"
+            android:background="#0060B2"
+            android:textColor="#FFF"
             android:gravity="center"
             android:text="확 인" />
 
