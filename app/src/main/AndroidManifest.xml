@@ -56,7 +56,11 @@
 
         <activity android:name=".mypage" />
         <activity android:name=".food_detail" />
-        <activity android:name=".h_food_detail"></activity>
+        <activity android:name=".h_food_detail" />
+        <activity
+            android:name=".popup"
+            android:theme="@style/popupTheme"
+            android:screenOrientation="portrait"  />
     </application>
 
 </manifest>

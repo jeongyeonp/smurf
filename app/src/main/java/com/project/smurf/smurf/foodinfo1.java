@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -27,6 +28,8 @@ import java.lang.String;
 
 public class foodinfo1 extends AppCompatActivity {
     private Button but_next;
+    private Button f_confrim;
+    private ImageView fv;
     private  TextView food_result;
     private  TextView food_result_kcal;
     private  TextView food_result_carb;
@@ -56,14 +59,15 @@ public class foodinfo1 extends AppCompatActivity {
 
     public JSONTask jt;
 
-    public String smurfurl = "http://210.102.181.158:62003/json";
-    //public String smurfurl = "http://192.9.20.62:62003/json";
+    public String smurfurl = "http://210.102.181.158:62003/";
+    public String furl = "";
+    public String vurl = "";
+    //public String smurfurl = "http://192.9.20.62:62003/";
 
     private static final String KEY_STATUS = "status";
     private static final String KEY_MESSAGE = "message";
     private SessionHandler session;
     private JSONObject req;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +76,8 @@ public class foodinfo1 extends AppCompatActivity {
         Intent intent = getIntent();
         String foodnames = intent.getExtras().getString("foodname");
         jt = new JSONTask();
-
-        jt.execute(smurfurl);
+        furl   = smurfurl+"json";
+        jt.execute(furl);
 
 
         //json_data
@@ -96,7 +100,16 @@ public class foodinfo1 extends AppCompatActivity {
 
             }
         });
+        f_confrim=(Button)findViewById(R.id.f_confirm);
+        f_confrim.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), popup.class);
+                intent.putExtra("foodname", zz_name);
+                startActivity(intent);
+            }
+        });
 
+        //foodview();
         food_result = (TextView)findViewById(R.id.food_result);
         food_result_kcal = (TextView)findViewById(R.id.food_result_kcal);
         food_result_carb = (TextView)findViewById(R.id.food_result_carb);
@@ -106,6 +119,7 @@ public class foodinfo1 extends AppCompatActivity {
         food_result_sug = (TextView)findViewById(R.id.food_result_sug);
         food_result_allergy = (TextView)findViewById(R.id.food_result_allergy);
         food_result_ing = (TextView)findViewById(R.id.food_result_ing);
+
 
 
     }
@@ -161,17 +175,6 @@ public class foodinfo1 extends AppCompatActivity {
                         zz_sug+=result_json_data.getString("food_sug");
                         zz_allergy+=result_json_data.getString("food_allergy");
                         zz_ing+=result_json_data.getString("food_ing");
-                        //textView.setText(result_json_data.toString());
-                       /* food_result.setText(result_json_data.getString("food_name_kor"));
-                        food_result_kcal.setText(result_json_data.getString("food_kcal"));
-                        food_result_carb.setText(result_json_data.getString("food_carb"));
-                        food_result_fat.setText(result_json_data.getString("food_fat"));
-                        food_result_prot.setText(result_json_data.getString("food_prot"));
-                        food_result_sal.setText(result_json_data.getString("food_sal"));
-                        food_result_sug.setText(result_json_data.getString("food_sug"));
-                        food_result_allergy.setText(result_json_data.getString("food_allergy"));
-                        food_result_ing.setText(result_json_data.getString("food_ing"));
-                        */
                     }
                 }
                 food_result.setText(zz_name);
@@ -203,7 +206,7 @@ public class foodinfo1 extends AppCompatActivity {
         }
 
         JsonObjectRequest jsArrayRequest = new JsonObjectRequest
-                (Request.Method.POST, smurfurl, req, new Response.Listener<JSONObject>() {
+                (Request.Method.POST, furl, req, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject res) {
                         try {
@@ -228,6 +231,54 @@ public class foodinfo1 extends AppCompatActivity {
                 });
         MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
     }
+    /*
+    private void foodview(){
+        fv = (ImageView)findViewById(R.id.foodview);
 
+        req1 = new JSONObject();
+        session = new SessionHandler(getApplicationContext());
+        User user = session.getUserDetails();
+        vurl = smurfurl+"v/"+user;
+        try {
+            req1.put("tf", zz_name.trim());
+            req1.put("user_id", user.getUser_id());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        JsonObjectRequest jsArrayRequest = new JsonObjectRequest
+                (Request.Method.POST, vurl, req1, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject res) {
+                        try {
+                            //Check if user got registered successfully
+                            if (res.getInt(KEY_STATUS) == 200) {
+                                fv.setImageResource(R.drawable.correct);
+
+                            }
+                            else if(res.getInt(KEY_STATUS) == 201){
+                                fv.setImageResource(R.drawable.incorrect);
+                            }
+                            else{
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+        MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
+    }
+    */
 }
+
+
+
+
+

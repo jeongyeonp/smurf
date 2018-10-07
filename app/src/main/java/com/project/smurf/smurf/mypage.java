@@ -9,6 +9,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,12 +30,13 @@ public class mypage extends AppCompatActivity {
     private Button mp_al;
     private  TextView mpuser;
     private ListView mpallergy;
-    private Button del;
+    private Button delfood;
 
     private SessionHandler session;
     private JSONObject info;
     public String mp_url = "http://210.102.181.158:62003/mp/";
     public String user_url = "";
+    public String del_url="";
 
     public String alist;
 
@@ -53,6 +60,16 @@ public class mypage extends AppCompatActivity {
                 finish();
             }
         });
+        /*
+        delfood=(Button)findViewById(R.id.delfood);
+        delfood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletefood();
+            }
+        });
+        */
+
 
 
         mpuser = (TextView) findViewById(R.id.mpuser);

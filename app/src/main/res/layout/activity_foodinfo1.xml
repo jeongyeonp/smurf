@@ -35,22 +35,15 @@
             android:background="#FFFFFF"
             tools:layout_editor_absoluteY="100dp" />
 
-        <ImageView
-            android:id="@+id/foodview"
-            android:layout_width="125dp"
-            android:layout_height="100dp"
-            android:layout_below="@+id/line"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp" />
 
         <TableLayout
             android:id="@+id/fooddetail"
             android:layout_width="392dp"
             android:layout_height="334dp"
-            android:layout_below="@+id/foodview"
             android:layout_centerHorizontal="true"
+            android:layout_below="@+id/line"
+            android:layout_marginTop="80dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
             android:gravity="center">
 
             <View
@@ -293,12 +286,24 @@
         </TableLayout>
 
         <Button
+            android:id="@+id/f_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fooddetail"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:background="#139990"
+            android:textColor="#FFF"
+            android:gravity="center"
+            android:text="진 단" />
+
+        <Button
             android:id="@+id/but_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fooddetail"
             android:layout_marginLeft="250dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="#0060B2"
             android:textColor="#FFF"
             android:gravity="center"
