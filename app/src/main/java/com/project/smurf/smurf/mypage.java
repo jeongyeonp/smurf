@@ -34,7 +34,8 @@ public class mypage extends AppCompatActivity {
 
     private SessionHandler session;
     private JSONObject info;
-    public String mp_url = "http://210.102.181.158:62003/mp/";
+    //public String mp_url = "http://210.102.181.158:62003/mp/";
+    public String mp_url = "";
     public String user_url = "";
     public String del_url="";
 
@@ -60,17 +61,6 @@ public class mypage extends AppCompatActivity {
                 finish();
             }
         });
-        /*
-        delfood=(Button)findViewById(R.id.delfood);
-        delfood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deletefood();
-            }
-        });
-        */
-
-
 
         mpuser = (TextView) findViewById(R.id.mpuser);
         mpallergy = (ListView) findViewById(R.id.mpallergy);
@@ -84,6 +74,8 @@ public class mypage extends AppCompatActivity {
         session = new SessionHandler(getApplicationContext());
         User user = session.getUserDetails();
         info = new JSONObject();
+        //--------------url-----------------
+        mp_url = getString(R.string.smurfurl)+"/mp/";
         user_url = mp_url + user.getUser_id();
 
         mpuser.setText(user.getUser_id()+"님의 알러지 정보 : ");
@@ -136,7 +128,6 @@ public class mypage extends AppCompatActivity {
                    /* mpallergy.append(result_array.getJSONObject(i).getString("allergy"));
                     mpallergy.append("\n");
                     */
-
                 }
             }catch(JSONException e){
                 e.printStackTrace();

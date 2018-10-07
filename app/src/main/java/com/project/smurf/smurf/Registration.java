@@ -37,7 +37,8 @@ public class Registration extends AppCompatActivity {
     private String upassword;
     private String confirmPassword;
     private ProgressDialog pDialog;
-    private String register_url = "http://210.102.181.158:62003/user_register";
+   // private String register_url = "http://210.102.181.158:62003/user_register";
+    private String register_url = "";
     private SessionHandler session;
 
     private Button btnRegisterLogin;
@@ -56,7 +57,6 @@ public class Registration extends AppCompatActivity {
         reg_Password = findViewById(R.id.reg_Password);
         reg_ConfirmPassword = findViewById(R.id.reg_ConfirmPassword);
         btnRegister = findViewById(R.id.btnRegister);
-
 
         btnRegisterLogin = (Button)findViewById(R.id.btnRegisterLogin);
         btnRegisterLogin.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +97,8 @@ public class Registration extends AppCompatActivity {
     private void uregister(){
         displayLoader();
         JSONObject req = new JSONObject();
+        //--------url-------------
+        register_url = getString(R.string.smurfurl)+"/user_register";
         try{
             req.put("name", uname);
             req.put("phone", uphone);

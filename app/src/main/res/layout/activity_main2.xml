@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="#FF9C00"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
@@ -33,11 +33,13 @@
 
     <Button
         android:id="@+id/but_foodinfo"
-        android:layout_width="wrap_content"
+        android:layout_width="146dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
         android:layout_marginLeft="150dp"
+        android:layout_marginTop="550dp"
+        android:background="#0060B2"
         android:text="음식 정보 상세 보기"
+        android:textColor="#FFFFFF"
         android:visibility="visible" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -18,27 +18,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import android.widget.ListView;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class Caution extends AppCompatActivity {
-    //private TextView a_food_info;
     private SessionHandler session;
     private JSONObject info;
-    public String mp_u_url = "http://210.102.181.158:62003/mypage/";
+    //public String mp_u_url = "http://210.102.181.158:62003/mypage/";
     public String user_info_url = "";
 
     public JSONTask allergyinfo;
     public JSONArray result_array;
     public  JSONObject result_data;
 
-    private ArrayList<HashMap<String,String>> Data = new ArrayList<HashMap<String, String>>();
-    private HashMap<String,String> InputData1 = new HashMap<>();
-    private HashMap<String,String> InputData2 = new HashMap<>();
     private ListView C_LV;
     private ArrayList<c_list> data =null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +49,8 @@ public class Caution extends AppCompatActivity {
                  startActivity(i);
             }
         });
-        user_info_url = mp_u_url + user.getUser_id();
+        //---------------url---------------
+        user_info_url =  getString(R.string.smurfurl)+"/mypage/" + user.getUser_id();
 
         allergyinfo = new JSONTask();
         allergyinfo.execute(user_info_url);
@@ -95,13 +88,10 @@ public class Caution extends AppCompatActivity {
         protected void onPostExecute(String result) {
             // super.onPostExecute(result);
             data=new ArrayList<>();
-
-
             try{
                 result_array=new JSONArray(result);
                 for(int i=0;i<result_array.length();i++) {
                     c_list fn = new c_list(result_array.getJSONObject(i).getString("food_name"));
-                    //a_food_info.append(result_array.getJSONObject(i).getString("food_name"));
                     data.add(fn);
 
                 }
@@ -110,7 +100,6 @@ public class Caution extends AppCompatActivity {
             }
             c_adapter adapter=new c_adapter(Caution.this, R.layout.list ,data);
             C_LV.setAdapter(adapter);
-
         }
     }
 }

@@ -27,7 +27,8 @@ public class popup extends AppCompatActivity {
     private ImageView popview;
     private SessionHandler session;
     private JSONObject info;
-    public String p_url = "http://210.102.181.158:62003/mypage/";
+    //public String p_url = "http://210.102.181.158:62003/mypage/";
+    public String p_url = "";
     public String user_p_url = "";
 
     public JSONTask allergyinfo;
@@ -56,7 +57,8 @@ public class popup extends AppCompatActivity {
             }
         });
 
-
+        //-----------------url-----------------
+        p_url = getString(R.string.smurfurl)+"/mypage/";
         user_p_url = p_url + user.getUser_id();
 
         allergyinfo = new JSONTask();
@@ -111,11 +113,11 @@ public class popup extends AppCompatActivity {
 
                     if (result_json_data.getString("food_name").trim().equals(result_data.trim())) {
                         popview.setImageResource(R.drawable.incorrect);
-                        popindex.setText(user.getUser_name() + "님 에게 위험한 음식");
+                        popindex.setText(user.getUser_name() + "님 에게 위험한 음식입니다.");
                         break;
                     } else if (!result_json_data.getString("food_name").trim().equals(result_data.trim())) {
                         popview.setImageResource(R.drawable.correct);
-                        popindex.setText(user.getUser_name() + "님 에게 안전한 음식");
+                        popindex.setText(user.getUser_name() + "님 에게 안전한 음식입니다.");
                     } else {
                         popindex.setText("no food");
                     }

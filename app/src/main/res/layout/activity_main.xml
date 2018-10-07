@@ -19,6 +19,9 @@
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="47dp"
+            android:textSize="18dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#000"
             android:text="----" />
 
         <TextView
@@ -26,18 +29,25 @@
             android:layout_width="179dp"
             android:layout_height="47dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/username"
             android:text=" 님 로그인 되었습니다."
+            android:textSize="18dp"
+            android:textColor="#000"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="9dp" />
 
         <Button
             android:id="@+id/logout"
-            android:layout_width="98dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
             android:layout_alignParentEnd="true"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="17dp"
-            android:text="로그아웃" />
+            android:layout_marginTop="5dp"
+            android:background="#F00"
+            android:text="로그아웃"
+            android:textColor="#FFF" />
 
     <FrameLayout
         android:id="@+id/frameLayout2"

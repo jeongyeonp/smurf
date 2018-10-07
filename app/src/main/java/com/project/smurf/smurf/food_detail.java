@@ -7,13 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.os.AsyncTask;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +17,6 @@ import java.io.InputStreamReader;
 import java.lang.String;
 
 public class food_detail extends AppCompatActivity {
-
     private Button but_next;
     private TextView food_result;
     private TextView food_result_kcal;
@@ -36,10 +28,8 @@ public class food_detail extends AppCompatActivity {
     private TextView food_result_allergy;
     private TextView food_result_ing;
 
-    public JSONObject json_data;
     public JSONArray json_array;
     public String data = "";
-    public String result_data = "";
     public JSONArray result_json_array;
     public JSONObject result_json_data;
 
@@ -57,27 +47,27 @@ public class food_detail extends AppCompatActivity {
 
     public JSONTask jt;
 
-    public String mpurl = "http://210.102.181.158:62003/json";
-    //public String smurfurl = "http://192.9.20.62:62003/json";
-
+    //public String mpurl = "http://210.102.181.158:62003/json";
+    public String mpurl = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
-
         Intent intent = getIntent();
         foodnames = intent.getExtras().getString("foodname");
         jt = new JSONTask();
 
+        //--------------url--------------
+        mpurl= getString(R.string.smurfurl)+"/json";
         jt.execute(mpurl);
+
         //json_data
         try {
             json_array = new JSONArray(foodnames);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         but_next = (Button) findViewById(R.id.but_next);
         but_next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -85,7 +75,6 @@ public class food_detail extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
-
             }
         });
 
@@ -98,13 +87,9 @@ public class food_detail extends AppCompatActivity {
         food_result_sug = (TextView) findViewById(R.id.food_result_sug);
         food_result_allergy = (TextView) findViewById(R.id.food_result_allergy);
         food_result_ing = (TextView) findViewById(R.id.food_result_ing);
-
     }
 
-
     public class JSONTask extends AsyncTask<String, String, String> {
-
-
         @Override
         protected String doInBackground(String... urls) {
             StringBuilder jsonHtml = new StringBuilder();
@@ -137,13 +122,11 @@ public class food_detail extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             // super.onPostExecute(result);
-
             try {
                 result_json_array = new JSONArray(result);
                 for (int i = 0; i < result_json_array.length(); i++) {
                     result_json_data = result_json_array.getJSONObject(i);
                     if (result_json_data.getString("food_name_kor").equals(foodnames)) {
-
                         zz_name += result_json_data.getString("food_name_kor");
                         zz_kcal += result_json_data.getString("food_kcal");
                         zz_carb += result_json_data.getString("food_carb");
@@ -153,19 +136,6 @@ public class food_detail extends AppCompatActivity {
                         zz_sug += result_json_data.getString("food_sug");
                         zz_allergy += result_json_data.getString("food_allergy");
                         zz_ing += result_json_data.getString("food_ing");
-
-
-                        //textView.setText(result_json_data.toString());
-                       /* food_result.setText(result_json_data.getString("food_name_kor"));
-                        food_result_kcal.setText(result_json_data.getString("food_kcal"));
-                        food_result_carb.setText(result_json_data.getString("food_carb"));
-                        food_result_fat.setText(result_json_data.getString("food_fat"));
-                        food_result_prot.setText(result_json_data.getString("food_prot"));
-                        food_result_sal.setText(result_json_data.getString("food_sal"));
-                        food_result_sug.setText(result_json_data.getString("food_sug"));
-                        food_result_allergy.setText(result_json_data.getString("food_allergy"));
-                        food_result_ing.setText(result_json_data.getString("food_ing"));
-                        */
                     }
                 }
                 food_result.setText(zz_name);
@@ -177,8 +147,6 @@ public class food_detail extends AppCompatActivity {
                 food_result_sug.setText(zz_sug);
                 food_result_allergy.setText(zz_allergy);
                 food_result_ing.setText(zz_ing);
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

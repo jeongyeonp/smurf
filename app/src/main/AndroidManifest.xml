@@ -41,7 +41,7 @@
         <activity android:name=".mypage_favor" />
         <activity
             android:name=".Main2Activity"
-            android:label="Reconizing Food"
+            android:label="Recognizing Food"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <provider

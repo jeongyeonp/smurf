@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -17,7 +16,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 public class login extends AppCompatActivity{
 
@@ -31,10 +29,9 @@ public class login extends AppCompatActivity{
     private String uid;
     private String upw;
     private ProgressDialog pDialog;
-    private String login_url = "http://210.102.181.158:62003/user_login";
-    //private String login_url = "http://192.9.20.62:62003/user_login";
+    //private String login_url = "http://210.102.181.158:62003/user_login";
+    private String login_url = "";
     private SessionHandler session;
-
 
     private Button butRegist;
     private Button  butLogin;
@@ -75,9 +72,6 @@ public class login extends AppCompatActivity{
                 startActivity(i);
             }
         });
-
-
-
         butIdPw = (Button) findViewById(R.id.butIdPw);
         butIdPw.setOnClickListener(new View.OnClickListener() {
 
@@ -86,13 +80,11 @@ public class login extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-
     }
     private void loadDashboard() {
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
         finish();
-
     }
     private void displayLoader() {
         pDialog = new ProgressDialog(login.this);
@@ -112,6 +104,8 @@ public class login extends AppCompatActivity{
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        //--------------url-------------------
+        login_url = getString(R.string.smurfurl)+"/user_login";
         JsonObjectRequest jsArrayRequest = new JsonObjectRequest
                 (Request.Method.POST, login_url, request, response -> {
                     pDialog.dismiss();
@@ -131,7 +125,6 @@ public class login extends AppCompatActivity{
                         e.printStackTrace();
                     }
                 }, new Response.ErrorListener() {
-
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         pDialog.dismiss();
@@ -142,11 +135,8 @@ public class login extends AppCompatActivity{
 
                     }
                 });
-
-        // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
     }
-
 
     private boolean validateInputs() {
         if(KEY_EMPTY.equals(uid)){

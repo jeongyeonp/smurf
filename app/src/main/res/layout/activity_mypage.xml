@@ -7,11 +7,11 @@
     tools:context=".mypage">
 
     <RelativeLayout
-        android:layout_width="406dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FF9C00"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="5dp">
+        tools:layout_editor_absoluteX="0dp">
 
 
         <ImageView
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="45dp"
+            android:layout_marginBottom="51dp"
             android:background="#0060B2"
             android:text="   나의 알러지 성분 선택  >   "
             android:textColor="#FFFFFF" />

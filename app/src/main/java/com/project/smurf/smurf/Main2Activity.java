@@ -44,10 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-
 import java.lang.String;
-
-
 
 public class Main2Activity extends AppCompatActivity {
     private static final String CLOUD_VISION_API_KEY = "AIzaSyD3bT8rXW2pBG1AkO5PlRSaoBRcILPC1nM";
@@ -332,12 +329,15 @@ public class Main2Activity extends AppCompatActivity {
         List<EntityAnnotation> labels = response.getResponses().get(0).getLabelAnnotations();
         foodname = labels.toString();
         if (labels != null) {
+            message.append("분석 완료!");
+            /*
             for (EntityAnnotation label : labels) {
                 //foodname=String.format(Locale.US, "%.3f: %s", label.getScore(), label.getDescription());
                 message.append(String.format(Locale.US, "%.3f: %s", label.getScore(), label.getDescription()));
                 message.append("\n");
                // foodname=message.toString();
             }
+            */
         } else {
             message.append("nothing");
         }
