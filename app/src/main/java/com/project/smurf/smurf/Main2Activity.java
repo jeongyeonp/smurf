@@ -330,14 +330,16 @@ public class Main2Activity extends AppCompatActivity {
         foodname = labels.toString();
         if (labels != null) {
             message.append("분석 완료!");
-            /*
+            message.append("\n");
+            //message.append(foodname);
+
             for (EntityAnnotation label : labels) {
                 //foodname=String.format(Locale.US, "%.3f: %s", label.getScore(), label.getDescription());
                 message.append(String.format(Locale.US, "%.3f: %s", label.getScore(), label.getDescription()));
                 message.append("\n");
-               // foodname=message.toString();
+               //foodname=message.toString();
             }
-            */
+
         } else {
             message.append("nothing");
         }

@@ -53,6 +53,7 @@ public class foodinfo1 extends AppCompatActivity {
     public String zz_sug=" ";
     public String zz_allergy=" ";
     public String zz_ing=" ";
+    public String foodnames="";
 
     public JSONTask jt;
 
@@ -70,7 +71,7 @@ public class foodinfo1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_foodinfo1);
         Intent intent = getIntent();
-        String foodnames = intent.getExtras().getString("foodname");
+        foodnames = intent.getExtras().getString("foodname");
         jt = new JSONTask();
         //----------------url-----------------
         smurfurl = getString(R.string.smurfurl);
@@ -78,12 +79,13 @@ public class foodinfo1 extends AppCompatActivity {
         jt.execute(furl);
 
         //json_data
-        try {
+        /*try {
             json_array = new JSONArray(foodnames);
             result_data = json_array.getJSONObject(0).getString("description");
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        */
 
         but_next = (Button) findViewById(R.id.but_next);
         but_next.setOnClickListener(new View.OnClickListener() {
@@ -145,37 +147,41 @@ public class foodinfo1 extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result) {
-           // super.onPostExecute(result);
+            // super.onPostExecute(result);
+            for (int j = 0; j < 10; j++){
 
-            try{
-                result_json_array=new JSONArray(result);
-                for(int i=0;i<result_json_array.length();i++){
-                    result_json_data=result_json_array.getJSONObject(i);
-                    if(result_json_data.getString("food_name_eng").equals(result_data)){
-                        zz_name+= result_json_data.getString("food_name_kor");
-                        zz_kcal+=result_json_data.getString("food_kcal");
-                        zz_carb+=result_json_data.getString("food_carb");
-                        zz_fat+=result_json_data.getString("food_fat");
-                        zz_prot+=result_json_data.getString("food_prot");
-                        zz_sal+=result_json_data.getString("food_sal");
-                        zz_sug+=result_json_data.getString("food_sug");
-                        zz_allergy+=result_json_data.getString("food_allergy");
-                        zz_ing+=result_json_data.getString("food_ing");
+                try {
+                    json_array = new JSONArray(foodnames);
+                    result_data = json_array.getJSONObject(j).getString("description");
+                    result_json_array = new JSONArray(result);
+                    for (int i = 0; i < result_json_array.length(); i++) {
+                        result_json_data = result_json_array.getJSONObject(i);
+                        if (result_json_data.getString("food_name_eng").equals(result_data)) {
+                            zz_name += result_json_data.getString("food_name_kor");
+                            zz_kcal += result_json_data.getString("food_kcal");
+                            zz_carb += result_json_data.getString("food_carb");
+                            zz_fat += result_json_data.getString("food_fat");
+                            zz_prot += result_json_data.getString("food_prot");
+                            zz_sal += result_json_data.getString("food_sal");
+                            zz_sug += result_json_data.getString("food_sug");
+                            zz_allergy += result_json_data.getString("food_allergy");
+                            zz_ing += result_json_data.getString("food_ing");
+                        }
                     }
-                }
-                food_result.setText(zz_name);
-                food_result_kcal.setText(zz_kcal);
-                food_result_carb.setText(zz_carb);
-                food_result_fat.setText(zz_fat);
-                food_result_prot.setText(zz_prot);
-                food_result_sal.setText(zz_sal);
-                food_result_sug.setText(zz_sug);
-                food_result_allergy.setText(zz_allergy);
-                food_result_ing.setText(zz_ing);
+                    food_result.setText(zz_name);
+                    food_result_kcal.setText(zz_kcal);
+                    food_result_carb.setText(zz_carb);
+                    food_result_fat.setText(zz_fat);
+                    food_result_prot.setText(zz_prot);
+                    food_result_sal.setText(zz_sal);
+                    food_result_sug.setText(zz_sug);
+                    food_result_allergy.setText(zz_allergy);
+                    food_result_ing.setText(zz_ing);
 
-            }catch(JSONException e){
-                e.printStackTrace();
-            }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+        }
         }
     }
     private void savelog() {

@@ -32,6 +32,6 @@
 
     <string name="image_picker_error">Something is wrong with that image. Pick a different one please.</string>
     <string name="title_activity_main2">Main2Activity</string>
-   <string name = "smurfurl">http://210.102.181.158:62003</string>
-    <!--<string name = "smurfurl">http://192.9.20.62:62003</string> -->
+    <string name = "smurfurl">http://210.102.181.158:62003</string>
+     <!--<string name = "smurfurl">http://192.9.20.62:62003</string>-->
 </resources>
