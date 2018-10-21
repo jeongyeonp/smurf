@@ -166,7 +166,9 @@ public class foodinfo1 extends AppCompatActivity {
                             zz_sug += result_json_data.getString("food_sug");
                             zz_allergy += result_json_data.getString("food_allergy");
                             zz_ing += result_json_data.getString("food_ing");
+                            break;
                         }
+
                     }
                     food_result.setText(zz_name);
                     food_result_kcal.setText(zz_kcal);
@@ -177,6 +179,7 @@ public class foodinfo1 extends AppCompatActivity {
                     food_result_sug.setText(zz_sug);
                     food_result_allergy.setText(zz_allergy);
                     food_result_ing.setText(zz_ing);
+                    break;
 
                 } catch (JSONException e) {
                     e.printStackTrace();
