@@ -44,5 +44,4 @@ public class mp_adapter extends BaseAdapter {
         name.setText(listviewitem.getAllergy());
         return convertView;
     }
-
 }

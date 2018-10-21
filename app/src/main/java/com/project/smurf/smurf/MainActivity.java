@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-
-
         butCamera = (ImageButton) findViewById(R.id.butCamera);
         butCamera.setOnClickListener(new View.OnClickListener() {
 
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
                 startActivity(intent);
                 finish();
-
             }
         });
         butMp = (ImageButton) findViewById(R.id.butMp);
@@ -60,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), mypage.class);
                 startActivity(intent);
-
             }
         });
         butXfood = (ImageButton) findViewById(R.id.butXfood);
@@ -69,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Caution.class);
                 startActivity(intent);
-
             }
         });
         butHis = (ImageButton) findViewById(R.id.butHis);

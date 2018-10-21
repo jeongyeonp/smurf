@@ -339,11 +339,9 @@ public class Main2Activity extends AppCompatActivity {
                 message.append("\n");
                //foodname=message.toString();
             }
-
         } else {
             message.append("nothing");
         }
-
         return message.toString();
     }
 
