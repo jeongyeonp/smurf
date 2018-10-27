@@ -32,7 +32,9 @@ public class h_adapter extends BaseAdapter {
         }
         h_list listviewitem=data.get(position);
         TextView name=(TextView)convertView.findViewById(R.id.foodname);
+        TextView hdate=(TextView)convertView.findViewById(R.id.hdate);
         name.setText(listviewitem.getFoodname());
+        hdate.setText(listviewitem.getHdate());
         return convertView;
     }
 

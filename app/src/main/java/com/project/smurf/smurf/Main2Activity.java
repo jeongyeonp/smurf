@@ -68,6 +68,8 @@ public class Main2Activity extends AppCompatActivity {
     public static String jfood;
     public static String foodname="";
 
+    public static int flag =0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,10 +97,21 @@ public class Main2Activity extends AppCompatActivity {
         but_foodinfo.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), foodinfo1.class);
-                intent.putExtra("foodname", foodname);
-                startActivity(intent);
-                finish();
+                if(flag==1) {
+                    Intent intent = new Intent(getApplicationContext(), foodinfo1.class);
+                    intent.putExtra("foodname", foodname);
+                    startActivity(intent);
+                    finish();
+                    flag = 0;
+                }
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
+                    builder.setMessage("사진을 찍거나 선택해주세요!");
+                    builder.setPositiveButton("확인",((dialog, which) -> {
+                        return;
+                    }));
+                    builder.create().show();
+                }
             }
         });
 
@@ -331,14 +344,16 @@ public class Main2Activity extends AppCompatActivity {
         if (labels != null) {
             message.append("분석 완료!");
             message.append("\n");
+            flag =1;
             //message.append(foodname);
 
-            for (EntityAnnotation label : labels) {
+         /*   for (EntityAnnotation label : labels) {
                 //foodname=String.format(Locale.US, "%.3f: %s", label.getScore(), label.getDescription());
                 message.append(String.format(Locale.US, "%.3f: %s", label.getScore(), label.getDescription()));
                 message.append("\n");
                //foodname=message.toString();
             }
+         */
         } else {
             message.append("nothing");
         }

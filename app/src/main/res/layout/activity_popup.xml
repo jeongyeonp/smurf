@@ -24,7 +24,7 @@
             android:id="@+id/popview"
             android:layout_width="123dp"
             android:layout_height="133dp"
-            app:srcCompat="@android:drawable/ic_delete" />
+            app:srcCompat="@drawable/correct" />
 
         <TextView
             android:id="@+id/popindex"

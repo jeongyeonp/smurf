@@ -49,6 +49,7 @@ public class History extends AppCompatActivity {
                 Intent i =new Intent(getApplicationContext(),h_food_detail.class);
                 i.putExtra("foodname", data.get(position).getFoodname());
                 startActivity(i);
+                finish();
             }
         });
 
@@ -92,13 +93,13 @@ public class History extends AppCompatActivity {
                 result_array=new JSONArray(result);
                 for(int i=0;i<result_array.length();i++) {
                     //temphis.append(result_array.getJSONObject(i).getString("history"));
-                    h_list fn = new h_list(result_array.getJSONObject(i).getString("history"));
+                    h_list fn = new h_list(result_array.getJSONObject(i).getString("history"),result_array.getJSONObject(i).getString("hdate"));
                     data.add(fn);
                 }
             }catch(JSONException e){
                 e.printStackTrace();
             }
-            h_adapter adapter=new h_adapter(History.this, R.layout.list ,data);
+            h_adapter adapter=new h_adapter(History.this, R.layout.h_list ,data);
             H_lv.setAdapter(adapter);
 
         }

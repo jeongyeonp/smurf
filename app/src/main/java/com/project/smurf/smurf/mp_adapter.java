@@ -32,13 +32,12 @@ public class mp_adapter extends BaseAdapter {
         if(convertView==null){
             convertView=inflater.inflate(layout,parent,false);
         }
-        if(position==0){
-            convertView.setOnTouchListener(new View.OnTouchListener(){
-                public boolean onTouch(View v, MotionEvent e){
-                    return true;
-                }
-            });
-        }
+        convertView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
         mp_list listviewitem=data.get(position);
         TextView name=(TextView)convertView.findViewById(R.id.fa);
         name.setText(listviewitem.getAllergy());

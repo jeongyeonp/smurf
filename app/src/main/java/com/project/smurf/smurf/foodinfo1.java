@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.AsyncTask;
 import android.widget.Toast;
+import android.support.v7.app.AlertDialog;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -23,6 +24,9 @@ import java.net.URL;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.String;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class foodinfo1 extends AppCompatActivity {
     private Button but_next;
@@ -44,7 +48,8 @@ public class foodinfo1 extends AppCompatActivity {
     public JSONArray result_json_array;
     public  JSONObject result_json_data;
 
-    public String zz_name=" ";
+    public String zz_name="";
+   /*
     public String zz_kcal=" ";
     public String zz_carb=" ";
     public String zz_fat=" ";
@@ -53,6 +58,7 @@ public class foodinfo1 extends AppCompatActivity {
     public String zz_sug=" ";
     public String zz_allergy=" ";
     public String zz_ing=" ";
+    */
     public String foodnames="";
 
     public JSONTask jt;
@@ -65,6 +71,7 @@ public class foodinfo1 extends AppCompatActivity {
     private static final String KEY_MESSAGE = "message";
     private SessionHandler session;
     private JSONObject req;
+    public static int ex =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,11 +94,12 @@ public class foodinfo1 extends AppCompatActivity {
         }
         */
 
+
         but_next = (Button) findViewById(R.id.but_next);
         but_next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 savelog();
                 startActivity(intent);
                 finish();
@@ -114,6 +122,8 @@ public class foodinfo1 extends AppCompatActivity {
         food_result_sug = (TextView)findViewById(R.id.food_result_sug);
         food_result_allergy = (TextView)findViewById(R.id.food_result_allergy);
         food_result_ing = (TextView)findViewById(R.id.food_result_ing);
+
+
     }
 
     public class JSONTask extends AsyncTask<String, String, String> {
@@ -147,9 +157,9 @@ public class foodinfo1 extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result) {
+            int flag=0;
             // super.onPostExecute(result);
             for (int j = 0; j < 10; j++){
-
                 try {
                     json_array = new JSONArray(foodnames);
                     result_data = json_array.getJSONObject(j).getString("description");
@@ -157,8 +167,20 @@ public class foodinfo1 extends AppCompatActivity {
                     for (int i = 0; i < result_json_array.length(); i++) {
                         result_json_data = result_json_array.getJSONObject(i);
                         if (result_json_data.getString("food_name_eng").equals(result_data)) {
-                            zz_name += result_json_data.getString("food_name_kor");
-                            zz_kcal += result_json_data.getString("food_kcal");
+                            zz_name +=result_json_data.getString("food_name_kor");
+                            food_result.setText(result_json_data.getString("food_name_kor"));
+                            food_result_kcal.setText(result_json_data.getString("food_kcal"));
+                            food_result_carb.setText(result_json_data.getString("food_carb"));
+                            food_result_fat.setText(result_json_data.getString("food_fat"));
+                            food_result_prot.setText(result_json_data.getString("food_prot"));
+                            food_result_sal.setText(result_json_data.getString("food_sal"));
+                            food_result_sug.setText(result_json_data.getString("food_sug"));
+                            food_result_allergy.setText(result_json_data.getString("food_allergy"));
+                            food_result_ing.setText(result_json_data.getString("food_ing"));
+                            flag =1;
+                            ex =0;
+                            break;
+                           /* zz_kcal += result_json_data.getString("food_kcal");
                             zz_carb += result_json_data.getString("food_carb");
                             zz_fat += result_json_data.getString("food_fat");
                             zz_prot += result_json_data.getString("food_prot");
@@ -166,11 +188,12 @@ public class foodinfo1 extends AppCompatActivity {
                             zz_sug += result_json_data.getString("food_sug");
                             zz_allergy += result_json_data.getString("food_allergy");
                             zz_ing += result_json_data.getString("food_ing");
-                            break;
+                            break;*/
+                        }else{
+                            ex = 1;
                         }
-
                     }
-                    food_result.setText(zz_name);
+                   /* food_result.setText(zz_name);
                     food_result_kcal.setText(zz_kcal);
                     food_result_carb.setText(zz_carb);
                     food_result_fat.setText(zz_fat);
@@ -178,22 +201,36 @@ public class foodinfo1 extends AppCompatActivity {
                     food_result_sal.setText(zz_sal);
                     food_result_sug.setText(zz_sug);
                     food_result_allergy.setText(zz_allergy);
-                    food_result_ing.setText(zz_ing);
-                    break;
-
+                    food_result_ing.setText(zz_ing);*/
+                   if(flag ==1){
+                       break;
+                   }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-        }
+            }
+            if(ex ==1){
+                AlertDialog.Builder builder = new AlertDialog.Builder(foodinfo1.this);
+                builder.setMessage("음식의 상세정보가 존재하지 않거나 음식 사진이 아닙니다. 다시 시도해주세요.");
+                builder.setPositiveButton("확인",((dialog, which) -> {
+                    Intent it = new Intent(getApplicationContext(), Main2Activity.class);
+                    startActivity(it);
+                    finish();
+                }));
+                builder.create().show();
+            }
         }
     }
     private void savelog() {
         req = new JSONObject();
         session = new SessionHandler(getApplicationContext());
         User user = session.getUserDetails();
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA);
+        String s_hdate = sf.format(new Date());
         try {
             req.put("history", zz_name.trim());
             req.put("user_id", user.getUser_id());
+            req.put("hdate",s_hdate.trim());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -219,7 +256,6 @@ public class foodinfo1 extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getApplicationContext(),
                                 error.getMessage(), Toast.LENGTH_SHORT).show();
-
                     }
                 });
         MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);

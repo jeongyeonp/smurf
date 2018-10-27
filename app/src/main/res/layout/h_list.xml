@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <TextView
+        android:id="@+id/foodname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="name"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#000"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/hdate"
+        android:layout_below="@+id/foodname"
+        android:text="date" />
+    <TextView
+        android:id="@+id/nxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentRight="true"
+        android:text=">"
+        android:textColor="#000"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+</RelativeLayout>

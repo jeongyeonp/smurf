@@ -67,6 +67,9 @@ public class popup extends AppCompatActivity {
         popview = (ImageView) findViewById(R.id.popview);
         popindex = (TextView) findViewById(R.id.popindex);
 
+        popview.setImageResource(R.drawable.correct);
+        popindex.setText(user.getUser_name() + "님 에게 안전한 음식입니다.");
+
     }
 
     public class JSONTask extends AsyncTask<String, String, String> {
@@ -119,7 +122,8 @@ public class popup extends AppCompatActivity {
                         popview.setImageResource(R.drawable.correct);
                         popindex.setText(user.getUser_name() + "님 에게 안전한 음식입니다.");
                     } else {
-                        popindex.setText("no food");
+                        popview.setImageResource(R.drawable.correct);
+                        popindex.setText(user.getUser_name() + "님 에게 안전한 음식입니다.");
                     }
 
 

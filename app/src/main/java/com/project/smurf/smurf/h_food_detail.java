@@ -73,7 +73,7 @@ public class h_food_detail extends AppCompatActivity {
         but_h_next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), History.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 finish();
             }
